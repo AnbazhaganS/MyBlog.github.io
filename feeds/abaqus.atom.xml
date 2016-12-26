@@ -37,7 +37,7 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Finite Element (FE) is an indispensable tool for structural analysis but there are few caveats, one of them is the model development time. Especially for complex geometries like wind turbine blades, where the Aerodynamic surfaces are based on non-planar surfaces. Even with all the bi-directional support between CAD packages(CATIA, SolidWorks, ..) and modeling capabilities of CAD tools, Modeling time is still a concern for Parametric FE analysis.&lt;/p&gt;
-&lt;p&gt;There are a ton of journal articles which gives the bird's eye view of developing Abaqus model for parametric analysis, but for starters, it's time-consuming to figure out. I've faced a similar situation when I started my master thesis, so I thought it'll be helpful to others if I write it down.&lt;/p&gt;
+&lt;p&gt;There are tonnes of journal articles which gives the bird's eye view of developing Abaqus model for parametric analysis, but for starters, it's time-consuming to figure out. I've faced a similar situation when I started my master thesis, so I thought it'll be helpful to others if I write it down.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -87,7 +87,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;The chord and alignment of airfoil section is fairly straight forward; chord is nothing but scaling of the airfoil in both the axis, whereas alignment of airfoil with pitch axis is subtraction along the x-axis. Twisting of the airfoil should be done about both the axis (2D rotation), which is nothing but product of rotation matrix and coordinates [2].&lt;/p&gt;
+&lt;p&gt;The chord and alignment of airfoil section is fairly straight forward; chord is nothing but scaling of the airfoil in both the axis, whereas alignment of airfoil with pitch axis is subtraction along the x-axis. Twisting of the airfoil should be done about both the axis (2D rotation), which is nothing but a product of rotation matrix and coordinates [2].&lt;/p&gt;
 &lt;figure&gt;
 &lt;img src="./images/2d_rotMatrix.svg" style="float:center"/&gt;
 &lt;/figure&gt;&lt;p&gt;The location of negative - in sin(theta) depends the direction of rotation which we prefer, for clockwise rotation the element (2, 1) is negative.&lt;/p&gt;
@@ -186,7 +186,7 @@
 &lt;p&gt;In order to draw the airfoil in Abaqus, it needs one more piece of information which is z location of the point. In our case z is the radial location of the cross-section. One more thing to keep in mind is that Abaqus expects the each data point of coordinates to be in &lt;em&gt;tuple&lt;/em&gt; type. Which can be done easily with list comprehension.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;coordTuple&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;tuple&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;coordinates&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;coordinates&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Another important thing to verify is that no two points are same (i.e., &lt;em&gt;distance between two consecutive points should be greater than 1E-16&lt;/em&gt;). Yes, I removed the repeating (1, 0) in S822 file.&lt;/p&gt;
+&lt;p&gt;Another important thing to verify is that no two points are same (i.e., the distance between two consecutive points should be greater than 1E-16_). Yes, I removed the repeating (1, 0) in S822 file.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -277,7 +277,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Now these cross sectional profiles can be lofted manually or automatically using &lt;em&gt;part.ShellLoft(loftsections=...)&lt;/em&gt;, depends on what level of automation the designer wishes. Automatic lofting is bit of overkill unless some sort of optimization which involves parameters that change the blade profile.&lt;/p&gt;
+&lt;p&gt;Now these cross-sectional profiles can be lofted manually or automatically using &lt;em&gt;part.ShellLoft(loftsections=...)&lt;/em&gt;, depends on what level of automation the designer wishes. Automatic lofting is a bit of overkill unless some sort of optimisation which involves parameters that change the blade profile.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;

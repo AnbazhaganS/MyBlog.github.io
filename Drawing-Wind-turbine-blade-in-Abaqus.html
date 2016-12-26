@@ -73,7 +73,7 @@
             <p>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
@@ -159,14 +159,16 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The chord and alignment of airfoil section is fairly straight forward; chord is nothing but scaling of the airfoil in both the axis, whereas alignment of airfoil with pitch axis is subtraction along the x-axis. Twisting of the airfoil should be done about both the axis (2D rotation), which is nothing but product of rotation matrix and coordinates [2].</p>
-$$ \begin{bmatrix} x'\\ y' \end{bmatrix} = \begin{bmatrix} \cos\theta & -\sin\theta \\\sin\theta  & \cos\theta \\ \end{bmatrix}                                            \begin{bmatrix} x\\ y \end{bmatrix} $$<p>The location of negative ($\rm{-}$) in $\rm{\sin\theta}$ depends the direction of rotation which we prefer, for clockwise rotation the element (2, 1) is negative.</p>
+<figure>
+<img src="./images/2d_rotMatrix.svg" style="float:center"/>
+</figure><p>The location of negative ($\rm{-}$) in $\rm{\sin\theta}$ depends the direction of rotation which we prefer, for clockwise rotation the element (2, 1) is negative.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">transformCoords</span><span class="p">(</span><span class="n">airfoilFile</span><span class="p">,</span> <span class="n">twist</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">chord</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">PA_Loc</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -362,19 +364,6 @@ $$ \begin{bmatrix} x'\\ y' \end{bmatrix} = \begin{bmatrix} \cos\theta & -\sin\th
 </figure>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div></p>
             
             <section>

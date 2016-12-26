@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Abaqus Modeling; Tips and Tricks</title><link href="http://abaqusamodelingtips.com/" rel="alternate"></link><link href="http://abaqusamodelingtips.com/feeds/abaqus.atom.xml" rel="self"></link><id>http://abaqusamodelingtips.com/</id><updated>2016-12-19T00:00:00+08:00</updated><entry><title>Drawing Wind turbine blade in Abaqus</title><link href="http://abaqusamodelingtips.com/Drawing-Wind-turbine-blade-in-Abaqus.html" rel="alternate"></link><published>2016-12-19T00:00:00+08:00</published><author><name>Subramani Anbazhagan</name></author><id>tag:abaqusamodelingtips.com,2016-12-18:Drawing-Wind-turbine-blade-in-Abaqus.html</id><summary type="html">&lt;p&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[1]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[&amp;nbsp;]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;print_function&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;division&lt;/span&gt;
@@ -88,14 +88,16 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The chord and alignment of airfoil section is fairly straight forward; chord is nothing but scaling of the airfoil in both the axis, whereas alignment of airfoil with pitch axis is subtraction along the x-axis. Twisting of the airfoil should be done about both the axis (2D rotation), which is nothing but product of rotation matrix and coordinates [2].&lt;/p&gt;
-$$ \begin{bmatrix} x'\\ y' \end{bmatrix} = \begin{bmatrix} \cos\theta &amp; -\sin\theta \\\sin\theta  &amp; \cos\theta \\ \end{bmatrix}                                            \begin{bmatrix} x\\ y \end{bmatrix} $$&lt;p&gt;The location of negative ($\rm{-}$) in $\rm{\sin\theta}$ depends the direction of rotation which we prefer, for clockwise rotation the element (2, 1) is negative.&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src="./images/2d_rotMatrix.svg" style="float:center"/&gt;
+&lt;/figure&gt;&lt;p&gt;The location of negative ($\rm{-}$) in $\rm{\sin\theta}$ depends the direction of rotation which we prefer, for clockwise rotation the element (2, 1) is negative.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[1]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[&amp;nbsp;]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;transformCoords&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;airfoilFile&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;twist&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;chord&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PA_Loc&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -291,19 +293,6 @@ $$ \begin{bmatrix} x'\\ y' \end{bmatrix} = \begin{bmatrix} \cos\theta &amp; -\si
 &lt;/figure&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[&amp;nbsp;]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; 
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
 &lt;/div&gt;&lt;/p&gt;</summary><category term="Abaqus"></category><category term="Python"></category></entry><entry><title>Generating Mesh for Abaqus using Python</title><link href="http://abaqusamodelingtips.com/Generating_mesh_for_Abaqus_using_Python.html" rel="alternate"></link><published>2016-11-21T00:00:00+08:00</published><author><name>Anbazhagan Subramani</name></author><id>tag:abaqusamodelingtips.com,2016-09-12:Generating_mesh_for_Abaqus_using_Python.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;print_function&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;division&lt;/span&gt;    &lt;span class="c1"&gt;# I&amp;#39;m using Python 2.7&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;

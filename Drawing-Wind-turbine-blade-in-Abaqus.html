@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Subramani Anbazhagan" />
+        <meta name="copyright" content="Subramani Anbazhagan" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="notebooks, Abaqus, " />
+
+<meta property="og:title" content="Drawing Wind turbine blade in Abaqus "/>
+<meta property="og:url" content="/Drawing-Wind-turbine-blade-in-Abaqus.html" />
+<meta property="og:description" content="Using python to draw wind turbine blade Abaqus FEA" />
+<meta property="og:site_name" content="AnbazhaganS" />
+<meta property="og:article:author" content="Subramani Anbazhagan" />
+<meta property="og:article:published_time" content="2016-12-18T00:00:00+08:00" />
+<meta property="" content="2016-12-19T00:00:00+08:00" />
+<meta name="twitter:title" content="Drawing Wind turbine blade in Abaqus ">
+<meta name="twitter:description" content="Using python to draw wind turbine blade Abaqus FEA">
+
+        <title>Drawing Wind turbine blade in Abaqus  · AnbazhaganS
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="AnbazhaganS - Full Atom Feed" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>AnbazhaganS</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="">Home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="/Drawing-Wind-turbine-blade-in-Abaqus.html"> Drawing Wind turbine blade in Abaqus  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            
+            <p>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.style</span> <span class="kn">import</span> <span class="n">use</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="c1"># use(r&quot;C:\Users\Anbu\.matplotlib\mystyle.mplstyle&quot;)</span>
+
+<span class="n">use</span><span class="p">(</span><span class="s2">&quot;ggplot&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Drawing-Wind-turbine-blade-in-Abaqus">Drawing Wind turbine blade in Abaqus<a class="anchor-link" href="#Drawing-Wind-turbine-blade-in-Abaqus">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finite Element (FE) is an indispensable tool for structural analysis but there are few caveats, one of them is the model development time. Especially for complex geometries like wind turbine blades, where the Aerodynamic surfaces are based on non-planar surfaces. Even with all the bi-directional support between CAD packages(CATIA, SolidWorks, ..) and modeling capabilities of CAD tools, Modeling time is still a concern for Parametric FE analysis.</p>
+<p>There are a ton of journal articles which gives the bird's eye view of developing Abaqus model for parametric analysis, but for starters, it's time-consuming to figure out. I've faced a similar situation when I started my master thesis, so I thought it'll be helpful to others if I write it down.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Overview-of-Geometry-Creation">Overview of Geometry Creation<a class="anchor-link" href="#Overview-of-Geometry-Creation">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Although the aerodynamic shape of the wind turbine blade is complex, complete geometry can be described with fairly simple topology As shown in Figure 1. Like region specific airfoil profile, distance from the root, pitch axis location, twist angle, chord length, etc. These 2D profiles can be drawn as wires in <em>Abaqus</em> and then the complete blade geometry can be created by lofting the successive 2D profiles.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<figure>
+<img src="./images/PlaceHolder_eternalSurfaceTopology.png" width="1780" height="1024" style="float:center"/>
+<figcaption style="text-align:center;">Figure 1. External surface topology [1] </figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Chord,-Twist-&amp;-Alignment-of-Airfoil-section">Chord, Twist &amp; Alignment of Airfoil section<a class="anchor-link" href="#Chord,-Twist-&amp;-Alignment-of-Airfoil-section">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The chord and alignment of airfoil section is fairly straight forward; chord is nothing but scaling of the airfoil in both the axis, whereas alignment of airfoil with pitch axis is subtraction along the x-axis. Twisting of the airfoil should be done about both the axis (2D rotation), which is nothing but product of rotation matrix and coordinates [2].</p>
+$$ \begin{bmatrix} x'\\ y' \end{bmatrix} = \begin{bmatrix} \cos\theta & -\sin\theta \\\sin\theta  & \cos\theta \\ \end{bmatrix}                                            \begin{bmatrix} x\\ y \end{bmatrix} $$<p>The location of negative ($\rm{-}$) in $\rm{\sin\theta}$ depends the direction of rotation which we prefer, for clockwise rotation the element (2, 1) is negative.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">transformCoords</span><span class="p">(</span><span class="n">airfoilFile</span><span class="p">,</span> <span class="n">twist</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">chord</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">PA_Loc</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Returns the twisted Coordinates</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    airfoilFile, str: file name which contains the coordinates of airfoil used,</span>
+<span class="sd">    twist, float: twist in degrees, default=0</span>
+<span class="sd">    chord, float: chord in metres, default=1 (unit chord)</span>
+<span class="sd">    rad_Loc, float: radial Location of the airfoil in blade, default=0</span>
+<span class="sd">    PA_Loc, float: Pitch axis location in percent of chord, default=0.25,</span>
+<span class="sd">                   Quarter-Chord location. (0 to 1)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    nd array: Coordinates rotated about pitch axis location </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rotationMatrix</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">theta</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span>   <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)],</span>
+                                              <span class="p">[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span>  <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)]</span> <span class="p">])</span>
+    <span class="n">twist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">twist</span><span class="p">)</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">airfoilFile</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">PA_Loc</span> <span class="o">*=</span> <span class="n">chord</span>           <span class="c1"># % P.A*chord</span>
+    <span class="n">coords</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">PA_Loc</span>    <span class="c1"># Translate the x/c coordinates to the pitch axis</span>
+    <span class="n">twistedCoords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>    
+    
+    <span class="n">coords_dash</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">rotationMatrix</span><span class="p">(</span><span class="n">twist</span><span class="p">),</span> <span class="n">coords</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">x_dash</span><span class="p">,</span> <span class="n">y_dash</span> <span class="o">=</span> <span class="n">coords_dash</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">coords_dash</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">twistedCoords</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">twistedCoords</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_dash</span><span class="p">,</span> <span class="n">y_dash</span>
+    
+    <span class="c1">#Join the first and last nodes to form a closed profile, very important for Abaqus</span>
+    <span class="n">twistedCoords</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">twistedCoords</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_dash</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_dash</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>      
+    <span class="n">twistedCoords</span> <span class="o">*=</span> <span class="n">chord</span>   <span class="c1"># Scale x/c and y/c to the chord</span>
+    <span class="k">return</span> <span class="n">twistedCoords</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">twistedCoords_1</span> <span class="o">=</span> <span class="n">transformCoords</span><span class="p">(</span><span class="s2">&quot;S822.txt&quot;</span><span class="p">,</span> <span class="n">twist</span><span class="o">=</span><span class="n">angle</span><span class="p">,</span> <span class="n">chord</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">PA_Loc</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">twistedCoords_1</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">twistedCoords_1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%2d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">angle</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The implementation of the above mentioned 2D rotation and an example with <a href="https://wind.nrel.gov/airfoils/shapes/S822_Shape.html">NREL S822 airfoil profile</a> is shown in Figure 2.</p>
+<figure>
+<img src="images/S822Rotation_along_diffAngles.png" width="640" height="480" style="float:center"/>
+<figcaption style="text-align:center;">Figure 2. Rotation of S822 airfoil coordinates about pitch axis</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Drawing-the-cross-sections-in-Abaqus">Drawing the cross-sections in Abaqus<a class="anchor-link" href="#Drawing-the-cross-sections-in-Abaqus">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In order to draw the airfoil in Abaqus, it needs one more piece of information which is z location of the point. In our case z is the radial location of the cross-section. One more thing to keep in mind is that Abaqus expects the each data point of coordinates to be in <em>tuple</em> type. Which can be done easily with list comprehension.</p>
+<div class="highlight"><pre><span></span><span class="n">coordTuple</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">coordinates</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
+</pre></div>
+<p>Another important thing to verify is that no two points are same (i.e., <em>distance between two consecutive points should be greater than 1E-16</em>). Yes, I removed the repeating (1, 0) in S822 file.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">airfoilFileName</span> <span class="o">=</span> <span class="s2">&quot;S822.txt&quot;</span>
+<span class="n">twist</span><span class="p">,</span> <span class="n">chord</span><span class="p">,</span> <span class="n">radLoc</span><span class="p">,</span> <span class="n">paLoc</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span>      <span class="c1"># Arbitary information</span>
+<span class="n">coordinates</span> <span class="o">=</span> <span class="n">transformCoords</span><span class="p">(</span><span class="n">airfoilFileName</span><span class="p">,</span> <span class="n">twist</span><span class="p">,</span> <span class="n">chord</span><span class="p">,</span> <span class="n">paLoc</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">tempCoord_storage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span>  <span class="c1"># Add radLoc to the coords</span>
+<span class="n">tempCoord_storage</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">coordinates</span>
+<span class="n">tempCoord_storage</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">radLoc</span>
+
+<span class="c1"># Each coord dp as tuple</span>
+<span class="n">coordTuple_i</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">tempCoord_storage</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tempCoord_storage</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Only in Abaqus CLI or Abaqus PDE or Executing script inside Abaqus</span>
+<span class="kn">from</span> <span class="nn">abaqus</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">abaqusConstants</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">partObject</span> <span class="o">=</span> <span class="n">mdb</span><span class="o">.</span><span class="n">models</span><span class="p">[</span><span class="s1">&#39;Model-1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">Part</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;wt_blade&quot;</span><span class="p">)</span>     <span class="c1"># Abaqus part object</span>
+<span class="n">partObject</span><span class="o">.</span><span class="n">WirePolyLine</span><span class="p">(</span><span class="n">coordTuple_i</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After creating a new part object, just passing this <em>coordTuple_i</em> to Abaqus part object will do the magic of drawing the profile as wire! Yeah, its simple as that. Now we can do all sort of pythonic stuff like,</p>
+
+<pre><code>* Providing a master blade file with the necessary information for each cross-section and iterating,
+* Renaming wires to a more sensible name on the fly and so on and so forth.</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<figure class="half">
+      <td>
+            <img  width="640" height="480" src="images/one_airfoilByWire.png"/>
+       </td>
+       <td>
+           <img  width="640" height="480" src="images/arbitary_blade.png"/>
+        </td>
+        <td>
+    <figcaption style="text-align:center;">Figure 3a & b. Twisted S822 airfoil cross-section profile by wire, Arbitary blade with different twist and chord</figcaption>
+    </td>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Lofting-the-cross-section-profiles">Lofting the cross-section profiles<a class="anchor-link" href="#Lofting-the-cross-section-profiles">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now these cross sectional profiles can be lofted manually or automatically using <em>part.ShellLoft(loftsections=...)</em>, depends on what level of automation the designer wishes. Automatic lofting is bit of overkill unless some sort of optimization which involves parameters that change the blade profile.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<figure>
+<img src="./images/lofted_section.png" width="640" height="480" style="float:center"/>
+<figcaption style="text-align:center;">Figure 4. Lofted airfoil cross-sections</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></p>
+            
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2016-12-18T00:00:00+08:00">Dec 18, 2016</time>
+
+<h4>Last Updated</h4>
+<time datetime="2016-12-19T00:00:00+08:00">Dec 19, 2016</time>
+
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#abaqus-ref">Abaqus</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="/tags.html#notebooks-ref">notebooks
+                    <span>1</span>
+</a></li>
+            </ul>
+<h4>Contact</h4>
+    <a href="https://sg.linkedin.com/in/subramanianbazhagan" title="My LinkedIn Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-linkedin sidebar-social-links"></i></a>
+    <a href="https://github.com/anbazhaganS" title="My GitHub Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-github sidebar-social-links"></i></a>
+    <a href="https://www.facebook.com/buckster06" title="My Facebook Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-facebook sidebar-social-links"></i></a>
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>

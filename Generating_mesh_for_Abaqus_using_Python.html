@@ -13,23 +13,24 @@
 <meta name="keywords" content="Abaqus, Mesh, Python, Abaqus, " />
 
 <meta property="og:title" content="Generating Mesh for Abaqus using Python "/>
-<meta property="og:url" content="./Generating_mesh_for_Abaqus_using_Python.html" />
+<meta property="og:url" content="/Generating_mesh_for_Abaqus_using_Python.html" />
 <meta property="og:description" content="A brief tutorial on how Finite Element mesh can be created for Abaqus using Python" />
-<meta property="og:site_name" content="Abaqus Modeling; Tips and Tricks" />
+<meta property="og:site_name" content="AnbazhaganS" />
 <meta property="og:article:author" content="Anbazhagan Subramani" />
 <meta property="og:article:published_time" content="2016-09-12T13:21:00+08:00" />
 <meta property="" content="2016-11-21T00:00:00+08:00" />
 <meta name="twitter:title" content="Generating Mesh for Abaqus using Python ">
 <meta name="twitter:description" content="A brief tutorial on how Finite Element mesh can be created for Abaqus using Python">
 
-        <title>Generating Mesh for Abaqus using Python  · Abaqus Modeling; Tips and Tricks
+        <title>Generating Mesh for Abaqus using Python  · AnbazhaganS
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="./theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="./theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="./theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="./theme/css/custom.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="AnbazhaganS - Full Atom Feed" />
     </head>
     <body>
         <div id="content-sans-footer">
@@ -41,14 +42,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="./"><span class=site-name>Abaqus Modeling; Tips and Tricks</span></a>
+                    <a class="brand" href="/"><span class=site-name>AnbazhaganS</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href=".">Home</a></li>
-                            <li ><a href="./categories.html">Categories</a></li>
-                            <li ><a href="./tags.html">Tags</a></li>
-                            <li ><a href="./archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="">Home</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -61,7 +62,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="./Generating_mesh_for_Abaqus_using_Python.html"> Generating Mesh for Abaqus using Python  </a></h1>
+    <h1><a href="/Generating_mesh_for_Abaqus_using_Python.html"> Generating Mesh for Abaqus using Python  </a></h1>
     </header>
 </div>
 
@@ -269,8 +270,8 @@ are few more for writing <em>Abaqus</em> input file (<tt class="docutils literal
 <span class="sd">    commentLine, str: string which goes in as comment</span>
 <span class="sd">    keywordLine, str: keyword line with parameters (if required)</span>
 <span class="sd">    Examples</span>
-<span class="sd">    header(testfile, &quot;Nodal Coordinates&quot;, &quot;NODE&quot;)</span>
-<span class="sd">    header(testfile, &quot;Elements&quot;, &quot;ELEMENT, TYPE=S4&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; header(testfile, &quot;Nodal Coordinates&quot;, &quot;NODE&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; header(testfile, &quot;Elements&quot;, &quot;ELEMENT, TYPE=S4&quot;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">outFile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;**</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">outFile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">commentLine</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)))</span>
@@ -409,40 +410,7 @@ for making it freely accessible to the academic users.</p>
 }
 </script>
             
-            <section>
-<div class="accordion" id="accordion2">
-    <div class="accordion-group">
-        <div class="accordion-heading">
-            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="./Generating_mesh_for_Abaqus_using_Python.html#disqus_thread">
-                Comments
-            </a>
-        </div>
-        <div id="disqus_thread" class="accordion-body collapse">
-            <div class="accordion-inner">
-                <div class="comments">
-                    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'abaqus-modeling-tips';
-        var disqus_identifier = './Generating_mesh_for_Abaqus_using_Python.html';
-    var disqus_url = './Generating_mesh_for_Abaqus_using_Python.html';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+            
             <hr/>
         </div>
         <section>
@@ -454,16 +422,16 @@ for making it freely accessible to the academic users.</p>
 <time datetime="2016-11-21T00:00:00+08:00">Nov 21, 2016</time>
 
             <h4>Category</h4>
-            <a class="category-link" href="./categories.html#abaqus-ref">Abaqus</a>
+            <a class="category-link" href="/categories.html#abaqus-ref">Abaqus</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="./tags.html#abaqus-ref">Abaqus
+                <li><a href="/tags.html#abaqus-ref">Abaqus
                     <span>1</span>
 </a></li>
-                <li><a href="./tags.html#mesh-ref">Mesh
+                <li><a href="/tags.html#mesh-ref">Mesh
                     <span>1</span>
 </a></li>
-                <li><a href="./tags.html#python-ref">Python
+                <li><a href="/tags.html#python-ref">Python
                     <span>1</span>
 </a></li>
             </ul>
@@ -499,45 +467,7 @@ for making it freely accessible to the academic users.</p>
             }
         </script>
 
-            <script type="text/javascript">
-var disqus_shortname = 'abaqus-modeling-tips';
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
-<script  language="javascript" type="text/javascript">
-function uncollapse() {
-    if (window.location.hash.match(/^#comment-\d+$/)) {
-        $('#disqus_thread').collapse('show');
-    }
-}
-</script>
-<script type="text/javascript" language="JavaScript">
-uncollapse();
-window.onhashchange=function(){
-    if (window.location.hash.match(/^#comment-\d+$/))
-        window.location.reload(true);
-}
-</script>
-<script>
-$('#disqus_thread').on('shown', function () {
-    var link = document.getElementsByClassName('accordion-toggle');
-    var old_innerHTML = link[0].innerHTML;
-    $(link[0]).fadeOut(500, function() {
-        $(this).text('Click here to hide comments').fadeIn(500);
-    });
-    $('#disqus_thread').on('hidden', function () {
-        $(link[0]).fadeOut(500, function() {
-            $(this).text(old_innerHTML).fadeIn(500);
-        });
-    })
-})
-</script>
-
-
+    
     </body>
     <!-- Theme: Elegant built for Pelican
     License : http://oncrashreboot.com/pelican-elegant -->

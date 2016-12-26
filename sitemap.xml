@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://abaqusamodelingtips.com/</loc>
-<lastmod>2016-12-26T13:41:44-00:00</lastmod>
+<lastmod>2016-12-26T13:47:14-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://abaqusamodelingtips.com/archives.html</loc>
-<lastmod>2016-12-26T13:41:44-00:00</lastmod>
+<lastmod>2016-12-26T13:47:14-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://abaqusamodelingtips.com/tags.html</loc>
-<lastmod>2016-12-26T13:41:44-00:00</lastmod>
+<lastmod>2016-12-26T13:47:14-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://abaqusamodelingtips.com/categories.html</loc>
-<lastmod>2016-12-26T13:41:44-00:00</lastmod>
+<lastmod>2016-12-26T13:47:14-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -54,21 +54,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://abaqusamodelingtips.com/tag/python.html</loc>
-<lastmod>2016-11-21T00:00:00+06:55</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://abaqusamodelingtips.com/tag/notebooks.html</loc>
 <lastmod>2016-12-19T00:00:00+06:55</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://abaqusamodelingtips.com/tag/abaqus.html</loc>
-<lastmod>2016-11-21T00:00:00+06:55</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -76,6 +62,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://abaqusamodelingtips.com/tag/mesh.html</loc>
 <lastmod>2016-11-21T00:00:00+06:55</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://abaqusamodelingtips.com/tag/abaqus.html</loc>
+<lastmod>2016-12-19T00:00:00+06:55</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

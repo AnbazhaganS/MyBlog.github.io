@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Abaqus Modeling; Tips and Tricks</title><link href="http://abaqusamodelingtips.com/" rel="alternate"></link><link href="http://abaqusamodelingtips.com/feeds/abaqus.atom.xml" rel="self"></link><id>http://abaqusamodelingtips.com/</id><updated>2016-12-19T00:00:00+08:00</updated><entry><title>Drawing Wind turbine blade in Abaqus</title><link href="http://abaqusamodelingtips.com/Drawing-Wind-turbine-blade-in-Abaqus.html" rel="alternate"></link><published>2016-12-19T00:00:00+08:00</published><author><name>Subramani Anbazhagan</name></author><id>tag:abaqusamodelingtips.com,2016-12-18:Drawing-Wind-turbine-blade-in-Abaqus.html</id><summary type="html">&lt;p&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;em&gt;Status: Please note thet this article is still a work in progress. 
+The reason why it's published before completion is that to prevent me from getting into the perfectionism trap and dragging the article for months!! Please bear with me.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Updates to expect:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Creating a loft path and using it for lofting,   &lt;/li&gt;
+&lt;li&gt;Similar approach for VAWT - Darrieus&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[&amp;nbsp;]:&lt;/div&gt;
@@ -11,8 +27,6 @@
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.style&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt;
 &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython.core.display&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;
-
-&lt;span class="c1"&gt;# use(r&amp;quot;C:\Users\Anbu\.matplotlib\mystyle.mplstyle&amp;quot;)&lt;/span&gt;
 
 &lt;span class="n"&gt;use&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ggplot&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -293,7 +307,8 @@
 &lt;/figure&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/p&gt;</summary><category term="Abaqus"></category><category term="Python"></category></entry><entry><title>Generating Mesh for Abaqus using Python</title><link href="http://abaqusamodelingtips.com/Generating_mesh_for_Abaqus_using_Python.html" rel="alternate"></link><published>2016-11-21T00:00:00+08:00</published><author><name>Anbazhagan Subramani</name></author><id>tag:abaqusamodelingtips.com,2016-09-12:Generating_mesh_for_Abaqus_using_Python.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;print_function&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;division&lt;/span&gt;    &lt;span class="c1"&gt;# I&amp;#39;m using Python 2.7&lt;/span&gt;
+&lt;/div&gt;&lt;/p&gt;</summary><category term="Abaqus"></category><category term="Python"></category></entry><entry><title>Generating Mesh for Abaqus using Python</title><link href="http://abaqusamodelingtips.com/Generating_mesh_for_Abaqus_using_Python.html" rel="alternate"></link><published>2016-11-21T00:00:00+08:00</published><author><name>Anbazhagan Subramani</name></author><id>tag:abaqusamodelingtips.com,2016-09-12:Generating_mesh_for_Abaqus_using_Python.html</id><summary type="html">&lt;p&gt;&lt;em&gt;Article Status: Final&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;print_function&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;division&lt;/span&gt;    &lt;span class="c1"&gt;# I&amp;#39;m using Python 2.7&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="section" id="contents"&gt;

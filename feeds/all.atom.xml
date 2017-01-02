@@ -50,8 +50,8 @@ The reason why it's published before completion is that to prevent me from getti
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Finite Element (FE) is an indispensable tool for structural analysis but there are few caveats, one of them is the model development time. Especially for complex geometries like wind turbine blades, where the Aerodynamic surfaces are based on non-planar surfaces. Even with all the bi-directional support between CAD packages(CATIA, SolidWorks, ..) and modeling capabilities of CAD tools, Modeling time is still a concern for Parametric FE analysis.&lt;/p&gt;
-&lt;p&gt;There are tonnes of journal articles which gives the bird's eye view of developing Abaqus model for parametric analysis, but for starters, it's time-consuming to figure out. I've faced a similar situation when I started my master thesis, so I thought it'll be helpful to others if I write it down.&lt;/p&gt;
+&lt;p&gt;Finite Element (FE) is an indispensable tool for structural analysis but there are few caveats, one of them is the model development time. Especially for complex geometries like wind turbine blades, where the Aerodynamic surfaces are based on non-planar surfaces, Getting a valid geometry to work with is still a challenge. Even with all the bi-directional support between CAD packages(CATIA, SolidWorks, ..) and modeling capabilities of CAD tools!&lt;/p&gt;
+&lt;p&gt;There are tonnes of journal articles which gives the bird's eye view of developing Abaqus model for wind turbine modeling, but for starters, it's time-consuming to figure out. I've faced a similar situation when I started my master thesis, so I thought it'll be helpful to others if I write it down.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
